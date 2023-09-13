@@ -28,7 +28,7 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-        
+        // Sonar Qube
         stage('Sonarqube') {
             steps {
                 withSonarQubeEnv('Sonar'){
