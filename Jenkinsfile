@@ -23,6 +23,12 @@ pipeline {
             }
         }
         
+        stage('Trivy Scan') {
+            steps {
+                sh "trivy fs ."
+            }
+        }
+        
         stage('OWASP Scan') {
             steps {
                 dependencyCheck additionalArguments: '--scan ./ ', odcInstallation: 'DC'
