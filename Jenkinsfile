@@ -3,7 +3,6 @@ pipeline {
     tools{
         jdk  'jdk17'
         maven  'maven3'
-        docker 'Docker'
     }
     
     environment{
@@ -63,7 +62,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'docker', toolName: 'Docker') {
+                    withDockerRegistry(credentialsId: 'docker') {
                         sh "docker build -t shopping-cart -f docker/Dockerfile ."
                         sh "docker tag  shopping-cart studymi/shopping-cart:latest"
                         sh "docker push studymi/shopping-cart:latest"
