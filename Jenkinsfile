@@ -58,7 +58,7 @@ pipeline {
             }
         }
         
-        
+        // Docker build , tag and push to the docker hub account
         stage('Docker Build & Push') {
             steps {
                 script{
