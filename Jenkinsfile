@@ -65,12 +65,20 @@ pipeline {
                     withDockerRegistry(credentialsId: 'docker') {
                         sh "docker build -t shopping-cart -f docker/Dockerfile ."
                         sh "docker tag  shopping-cart studymi/shopping-cart:latest"
-                        sh "docker push studymi/shopping-cart:latest"
+                        sh "docker push studymi/shopping-cart:dev"
                     }
                 }
             }
         }
-        
-        
+        // Docker run
+        stage('Docker Build & Push') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'docker') {
+                        sh "docker run -d ekart -p 8070:8070 studymi/shopping-cart:dev"
+                    }
+                }
+            }
+        }        
     }
 }
