@@ -64,7 +64,7 @@ pipeline {
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
                         sh "docker build -t shopping-cart -f docker/Dockerfile ."
-                        sh "docker tag  shopping-cart studymi/shopping-cart:latest"
+                        sh "docker tag  shopping-cart studymi/shopping-cart:dev"
                         sh "docker push studymi/shopping-cart:dev"
                     }
                 }
