@@ -71,7 +71,7 @@ pipeline {
             }
         }
         // Docker run
-        stage('Docker Build & Push') {
+        stage('Docker run container') {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
