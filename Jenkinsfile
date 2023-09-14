@@ -75,7 +75,8 @@ pipeline {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker') {
-                        sh "docker run -d ekart -p 8070:8070 studymi/shopping-cart:dev"
+                        sh "docker pull studymi/shopping-cart:dev"
+                        sh "docker run --rm -d ekart -p 8070:8070 studymi/shopping-cart:dev"
                     }
                 }
             }
